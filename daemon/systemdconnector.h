@@ -21,6 +21,7 @@
 #define SYSTEMDCONNECTOR_H
 
 #include <QDBusConnection>
+#include <QDBusPendingCallWatcher>
 #include <QObject>
 
 static const QString s_serviceName = QStringLiteral("org.freedesktop.systemd1");
@@ -46,6 +47,7 @@ public slots:
 
 private slots:
     void propertiesChanged(const QString &, const QVariantMap &properties, const QStringList &);
+    void startSShdState(QDBusPendingCallWatcher *watcher);
 
 private:
     QDBusConnection m_systemDBusConnection;

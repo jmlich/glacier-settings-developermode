@@ -20,6 +20,7 @@
 #include "systemdconnector.h"
 
 #include <QDBusInterface>
+#include <QDBusPendingReply>
 #include <QDebug>
 
 SystemDConnector::SystemDConnector(QObject *parent)
@@ -31,21 +32,17 @@ SystemDConnector::SystemDConnector(QObject *parent)
         qFatal("Can't connect to system bus");
     }
 
-    QDBusInterface dbInterface(
-                s_serviceName
-                , s_servicePath
-                , s_interfce
-                , m_systemDBusConnection);
+    QDBusMessage msg = QDBusMessage::createMethodCall(
+                s_serviceName,
+                s_servicePath,
+                s_unitIface,
+                "ActiveState");
+    QDBusPendingReply<QVariant> msgPending = QDBusConnection::systemBus().asyncCall(msg);
+    QDBusPendingCallWatcher *msgWatcher = new QDBusPendingCallWatcher(msgPending);
 
-    if (dbInterface.isValid () ) {
-        if(dbInterface.property("ActiveState").toString() == "active") {
-            m_sshdActive = true;
-        }
-    } else {
-        qFatal("Systemd interface not found");
-    }
+    connect(msgWatcher, &QDBusPendingCallWatcher::finished, this, &SystemDConnector::startSShdState);
 
-    QDBusConnection::systemBus().connect(
+    m_systemDBusConnection.connect(
                 QString(),
                 s_servicePath,
                 s_propertiesIface,
@@ -70,7 +67,7 @@ void SystemDConnector::enableDeveloperMode(bool enable)
     QDBusConnection::systemBus().call(msg);
 }
 
-void SystemDConnector::propertiesChanged(const QString &, const QVariantMap &properties, const QStringList &)
+void SystemDConnector::propertiesChanged(const QString &data, const QVariantMap &properties, const QStringList &invalidatedProperties)
 {
     bool activeState = properties.value(s_propertyActiveState, QString()).toString() == "active";
     if(activeState != m_sshdActive) {
@@ -81,4 +78,16 @@ void SystemDConnector::propertiesChanged(const QString &, const QVariantMap &pro
         }
         emit sshActiveChanged(m_sshdActive);
     }
+}
+
+void SystemDConnector::startSShdState(QDBusPendingCallWatcher *watcher)
+{
+    watcher->deleteLater();
+    QDBusPendingReply<QVariant> reply = *watcher;
+    if (reply.isError()) {
+        qWarning() << "ERROR" << reply.error().message();
+        return;
+    }
+
+    qDebug() << Q_FUNC_INFO << reply.value();
 }
