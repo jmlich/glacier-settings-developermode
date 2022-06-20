@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     QDBusConnection::systemBus().registerObject("/", &obj);
 
     if (!QDBusConnection::systemBus().registerService("org.nemomobile.developermode")) {
-        qFatal(qPrintable(QDBusConnection::sessionBus().lastError().message()));
+        qFatal("%s", qPrintable(QDBusConnection::sessionBus().lastError().message()));
         exit(1);
     }
 
