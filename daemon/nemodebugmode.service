@@ -1,0 +1,12 @@
+[Unit]
+Description=NemoMobile developer mode
+After=dbus.service network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/glacier-developermode-daemon
+Restart=on-failure
+TimeoutStartSec=240
+
+[Install]
+WantedBy=multi-user.target
