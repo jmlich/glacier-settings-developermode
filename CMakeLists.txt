@@ -13,6 +13,7 @@ set(CMAKE_AUTORCC ON)
 include(FeatureSummary)
 include(GNUInstallDirs)
 
+set(CMAKE_INSTALL_PREFIX /usr)
 set(INSTALL_QML_IMPORT_DIR "${CMAKE_INSTALL_FULL_LIBDIR}/qt/qml"
 	CACHE PATH "Custom QML import installation directory")
 
@@ -37,5 +38,6 @@ FindQtInstallQml()
 
 add_subdirectory(org.glacier.developermode)
 add_subdirectory(daemon)
+add_subdirectory(plugin)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
