@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.6.0)
 
-project(nemo-qml-pugin-developermode
+project(glacier-settings-developermode
         VERSION 0.0.1
-        DESCRIPTION "Nemo pugin to manage developer mode")
+        DESCRIPTION "Glacier settings pugin to manage developer mode")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
