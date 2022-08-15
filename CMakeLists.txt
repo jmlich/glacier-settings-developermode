@@ -35,7 +35,7 @@ endfunction()
 
 FindQtInstallQml()
 
-add_subdirectory(plugin)
+add_subdirectory(org.glacier.developermode)
 add_subdirectory(daemon)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
