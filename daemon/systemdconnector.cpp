@@ -23,55 +23,55 @@
 #include <QDBusPendingReply>
 #include <QDebug>
 
-SystemDConnector::SystemDConnector(QObject *parent)
-    : QObject{parent}
+SystemDConnector::SystemDConnector(QObject* parent)
+    : QObject { parent }
     , m_systemDBusConnection(QDBusConnection::systemBus())
     , m_sshdActive(false)
 {
-    if(!m_systemDBusConnection.isConnected()) {
+    if (!m_systemDBusConnection.isConnected()) {
         qFatal("Can't connect to system bus");
     }
 
     QDBusMessage msg = QDBusMessage::createMethodCall(
-                s_serviceName,
-                s_servicePath,
-                s_unitIface,
-                "ActiveState");
+        s_serviceName,
+        s_servicePath,
+        s_unitIface,
+        "ActiveState");
     QDBusPendingReply<QVariant> msgPending = QDBusConnection::systemBus().asyncCall(msg);
-    QDBusPendingCallWatcher *msgWatcher = new QDBusPendingCallWatcher(msgPending);
+    QDBusPendingCallWatcher* msgWatcher = new QDBusPendingCallWatcher(msgPending);
 
     connect(msgWatcher, &QDBusPendingCallWatcher::finished, this, &SystemDConnector::startSShdState);
 
     m_systemDBusConnection.connect(
-                QString(),
-                s_servicePath,
-                s_propertiesIface,
-                "PropertiesChanged",
-                this,
-                SLOT(propertiesChanged(QString, QVariantMap, QStringList)));
+        QString(),
+        s_servicePath,
+        s_propertiesIface,
+        "PropertiesChanged",
+        this,
+        SLOT(propertiesChanged(QString, QVariantMap, QStringList)));
 }
 
 void SystemDConnector::enableDeveloperMode(bool enable)
 {
     QString action = "Stop";
-    if(enable) {
+    if (enable) {
         action = "Start";
     }
     QDBusMessage msg = QDBusMessage::createMethodCall(
-                s_serviceName,
-                s_servicePath,
-                s_unitIface,
-                action);
+        s_serviceName,
+        s_servicePath,
+        s_unitIface,
+        action);
 
-    msg.setArguments({"replace"});
+    msg.setArguments({ "replace" });
     QDBusConnection::systemBus().call(msg);
 }
 
-void SystemDConnector::propertiesChanged(const QString &data, const QVariantMap &properties, const QStringList &invalidatedProperties)
+void SystemDConnector::propertiesChanged(const QString& data, const QVariantMap& properties, const QStringList& invalidatedProperties)
 {
     bool activeState = properties.value(s_propertyActiveState, QString()).toString() == "active";
-    if(activeState != m_sshdActive) {
-        if(activeState) {
+    if (activeState != m_sshdActive) {
+        if (activeState) {
             m_sshdActive = true;
         } else {
             m_sshdActive = false;
@@ -80,7 +80,7 @@ void SystemDConnector::propertiesChanged(const QString &data, const QVariantMap 
     }
 }
 
-void SystemDConnector::startSShdState(QDBusPendingCallWatcher *watcher)
+void SystemDConnector::startSShdState(QDBusPendingCallWatcher* watcher)
 {
     watcher->deleteLater();
     QDBusPendingReply<QVariant> reply = *watcher;

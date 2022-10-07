@@ -24,17 +24,16 @@
 #include <QObject>
 #include <QQuickItem>
 
-class DeveloperMode : public QObject
-{
+class DeveloperMode : public QObject {
     Q_OBJECT
     Q_PROPERTY(bool available READ available NOTIFY availableChanged)
     Q_PROPERTY(bool enabled READ enabled WRITE setEnabled NOTIFY enabledChanged)
 
 public:
-    explicit DeveloperMode(QQuickItem *parent = nullptr);
+    explicit DeveloperMode(QQuickItem* parent = nullptr);
 
-    bool available() {return m_available;}
-    bool enabled() {return m_enabled;}
+    bool available() { return m_available; }
+    bool enabled() { return m_enabled; }
 
     void setEnabled(bool enable);
 
@@ -44,7 +43,7 @@ signals:
 
 private slots:
     void onSshDChanged(QString path);
-    void propertiesChanged(const QString &, const QVariantMap &properties, const QStringList &);
+    void propertiesChanged(const QString&, const QVariantMap& properties, const QStringList&);
 
 private:
     bool m_available;

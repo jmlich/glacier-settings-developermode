@@ -20,24 +20,21 @@
 #include "userspaceconnector.h"
 #include "systemdconnector.h"
 
-#include <QDebug>
-#include <QDBusError>
 #include <QDBusConnection>
+#include <QDBusError>
 #include <QDBusInterface>
+#include <QDebug>
 
-UserSpaceConnector::UserSpaceConnector(QObject *obj)
+UserSpaceConnector::UserSpaceConnector(QObject* obj)
     : QDBusAbstractAdaptor(obj)
     , m_enabled(false)
 {
     QDBusConnection systemConnection = QDBusConnection::systemBus();
     QDBusInterface dbInterface(
-                s_serviceName
-                , s_servicePath
-                , s_interfce
-                , systemConnection);
+        s_serviceName, s_servicePath, s_interfce, systemConnection);
 
     if (dbInterface.isValid()) {
-        if(dbInterface.property("ActiveState").toString() == "active") {
+        if (dbInterface.property("ActiveState").toString() == "active") {
             m_enabled = true;
         }
         qDebug() << dbInterface.property("ActiveState").toString();
@@ -48,7 +45,7 @@ UserSpaceConnector::UserSpaceConnector(QObject *obj)
 
 void UserSpaceConnector::setEnabled(bool enabled)
 {
-    if(m_enabled != enabled) {
+    if (m_enabled != enabled) {
         m_enabled = enabled;
         emit enabledChanged(m_enabled);
     }

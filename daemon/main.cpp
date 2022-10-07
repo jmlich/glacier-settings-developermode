@@ -17,13 +17,13 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#include <QObject>
-#include <QCoreApplication>
 #include "qdbuserror.h"
 #include "systemdconnector.h"
 #include "userspaceconnector.h"
+#include <QCoreApplication>
+#include <QObject>
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
     QCoreApplication a(argc, argv);
 

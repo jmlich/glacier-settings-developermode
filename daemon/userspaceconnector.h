@@ -23,15 +23,14 @@
 #include <QDBusAbstractAdaptor>
 #include <QObject>
 
-class UserSpaceConnector : public QDBusAbstractAdaptor
-{
+class UserSpaceConnector : public QDBusAbstractAdaptor {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.nemomobile.developermode")
     Q_PROPERTY(bool enabled READ enabled WRITE setEnabled NOTIFY enabledChanged)
 public:
-    UserSpaceConnector(QObject *obj);
+    UserSpaceConnector(QObject* obj);
 
-    bool enabled() {return m_enabled;}
+    bool enabled() { return m_enabled; }
     void setEnabled(bool enabled);
 
 signals:

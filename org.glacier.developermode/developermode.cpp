@@ -22,8 +22,8 @@
 #include <QDBusInterface>
 #include <QFileSystemWatcher>
 
-DeveloperMode::DeveloperMode(QQuickItem *parent)
-    : QObject{parent}
+DeveloperMode::DeveloperMode(QQuickItem* parent)
+    : QObject { parent }
     , m_available(QFile::exists("/usr/bin/sshd"))
     , m_enabled(false)
 {
@@ -33,15 +33,11 @@ DeveloperMode::DeveloperMode(QQuickItem *parent)
     sshdWatcher.addPath("/usr/bin/sshd");
     connect(&sshdWatcher, &QFileSystemWatcher::fileChanged, this, &DeveloperMode::onSshDChanged);
 
-
     QDBusInterface dbInterface(
-                "org.nemomobile.developermode"
-                , "/"
-                , "org.nemomobile.developermode"
-                , systemDBusConnection);
+        "org.nemomobile.developermode", "/", "org.nemomobile.developermode", systemDBusConnection);
 
-    if (dbInterface.isValid () ) {
-        if(dbInterface.property("enabled").toBool()) {
+    if (dbInterface.isValid()) {
+        if (dbInterface.property("enabled").toBool()) {
             m_enabled = true;
         }
     } else {
@@ -49,21 +45,21 @@ DeveloperMode::DeveloperMode(QQuickItem *parent)
     }
 
     QDBusConnection::systemBus().connect(
-                QString(),
-                "org.nemomobile.developermode",
-                "org.freedesktop.DBus.Properties",
-                "PropertiesChanged",
-                this,
-                SLOT(propertiesChanged(QString, QVariantMap, QStringList)));
+        QString(),
+        "org.nemomobile.developermode",
+        "org.freedesktop.DBus.Properties",
+        "PropertiesChanged",
+        this,
+        SLOT(propertiesChanged(QString, QVariantMap, QStringList)));
 }
 
 void DeveloperMode::setEnabled(bool enable)
 {
-    if(!m_available) {
+    if (!m_available) {
         return;
     }
 
-    if(m_enabled != enable) {
+    if (m_enabled != enable) {
         m_enabled = enable;
         emit enabledChanged();
     }
@@ -72,16 +68,16 @@ void DeveloperMode::setEnabled(bool enable)
 void DeveloperMode::onSshDChanged(QString path)
 {
     bool ssdAvaileble = QFile::exists("/usr/bin/sshd");
-    if(ssdAvaileble != m_available) {
+    if (ssdAvaileble != m_available) {
         m_available = ssdAvaileble;
         emit availableChanged();
     }
 }
 
-void DeveloperMode::propertiesChanged(const QString &, const QVariantMap &properties, const QStringList &)
+void DeveloperMode::propertiesChanged(const QString&, const QVariantMap& properties, const QStringList&)
 {
     bool enabled = properties.value("enabled", QString()).toBool();
-    if(enabled != m_enabled) {
+    if (enabled != m_enabled) {
         m_enabled = enabled;
         enabledChanged();
     }

@@ -22,19 +22,18 @@
 
 #include <glaciersettingsplugin.h>
 
-class DevelopmentSettingsPlugin  : public GlacierSettingsPlugin
-{
+class DevelopmentSettingsPlugin : public GlacierSettingsPlugin {
     Q_OBJECT
     Q_INTERFACES(GlacierSettingsPlugin)
     Q_PLUGIN_METADATA(IID "Glacier.SettingsPlugin")
 public:
-    DevelopmentSettingsPlugin(QObject *parent = nullptr);
-    PluginCategory category() { return PluginCategory::Development ;}
-    QString id() { return "development";}
-    QString title() { return tr("Development");}
-    QString description() { return "Developmet tools and settings";}
-    QString qmlPath() { return "/usr/share/glacier-settings/plugins/development/development.qml";}
-    QString icon() { return "/usr/share/glacier-settings/plugins/development/development.svg";}
+    DevelopmentSettingsPlugin(QObject* parent = nullptr);
+    PluginCategory category() { return PluginCategory::Development; }
+    QString id() { return "development"; }
+    QString title() { return tr("Development"); }
+    QString description() { return "Developmet tools and settings"; }
+    QString qmlPath() { return "/usr/share/glacier-settings/plugins/development/development.qml"; }
+    QString icon() { return "/usr/share/glacier-settings/plugins/development/development.svg"; }
     bool enabled();
 
 private slots:

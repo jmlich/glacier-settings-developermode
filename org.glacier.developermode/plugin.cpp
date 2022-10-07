@@ -17,27 +17,26 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#include <QtQml>
-#include <QtGlobal>
 #include <QQmlEngine>
 #include <QQmlExtensionPlugin>
+#include <QtGlobal>
+#include <QtQml>
 
 #include "developermode.h"
 
-class Q_DECL_EXPORT GlacierDeveloperModePlugin : public QQmlExtensionPlugin
-{
+class Q_DECL_EXPORT GlacierDeveloperModePlugin : public QQmlExtensionPlugin {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.glacier.developermode")
 public:
     virtual ~GlacierDeveloperModePlugin() { }
 
-    void initializeEngine(QQmlEngine *, const char *uri)
+    void initializeEngine(QQmlEngine*, const char* uri)
     {
         Q_ASSERT(uri == QLatin1String("org.glacier.developermode"));
         qmlRegisterModule(uri, 1, 0);
     }
 
-    void registerTypes(const char *uri)
+    void registerTypes(const char* uri)
     {
         Q_ASSERT(uri == QLatin1String("org.glacier.developermode"));
         qmlRegisterType<DeveloperMode>(uri, 1, 0, "DeveloperMode");

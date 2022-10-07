@@ -22,8 +22,8 @@
 #include <QFile>
 #include <QFileSystemWatcher>
 
-DevelopmentSettingsPlugin::DevelopmentSettingsPlugin(QObject *parent):
-    m_enabled(false)
+DevelopmentSettingsPlugin::DevelopmentSettingsPlugin(QObject* parent)
+    : m_enabled(false)
 {
     QFileSystemWatcher sshdWatcher;
     sshdWatcher.addPath("/usr/bin/sshd");
@@ -32,14 +32,15 @@ DevelopmentSettingsPlugin::DevelopmentSettingsPlugin(QObject *parent):
     m_enabled = QFile::exists("/usr/bin/sshd");
 }
 
-bool DevelopmentSettingsPlugin::enabled() {
+bool DevelopmentSettingsPlugin::enabled()
+{
     return m_enabled;
 }
 
 void DevelopmentSettingsPlugin::onSshDChanged(QString path)
 {
     bool ssdAvaileble = QFile::exists("/usr/bin/sshd");
-    if(ssdAvaileble != m_enabled) {
+    if (ssdAvaileble != m_enabled) {
         m_enabled = ssdAvaileble;
         emit pluginChanged(id());
     }

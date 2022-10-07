@@ -33,11 +33,10 @@ static const QString s_unitIface = QStringLiteral("org.freedesktop.systemd1.Unit
 static const QString s_propertiesIface = QStringLiteral("org.freedesktop.DBus.Properties");
 static const QString s_propertyActiveState = QStringLiteral("ActiveState");
 
-class SystemDConnector : public QObject
-{
+class SystemDConnector : public QObject {
     Q_OBJECT
 public:
-    explicit SystemDConnector(QObject *parent = nullptr);
+    explicit SystemDConnector(QObject* parent = nullptr);
 
 signals:
     void sshActiveChanged(bool active);
@@ -46,8 +45,8 @@ public slots:
     void enableDeveloperMode(bool enable);
 
 private slots:
-    void propertiesChanged(const QString &, const QVariantMap &properties, const QStringList &);
-    void startSShdState(QDBusPendingCallWatcher *watcher);
+    void propertiesChanged(const QString&, const QVariantMap& properties, const QStringList&);
+    void startSShdState(QDBusPendingCallWatcher* watcher);
 
 private:
     QDBusConnection m_systemDBusConnection;
