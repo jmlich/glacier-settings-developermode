@@ -18,7 +18,7 @@ set(INSTALL_QML_IMPORT_DIR "${CMAKE_INSTALL_FULL_LIBDIR}/qt/qml"
 	CACHE PATH "Custom QML import installation directory")
 
 set(QT_MIN_VERSION "5.11.0")
-find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Gui Qml Quick DBus REQUIRED)
+find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Gui Qml Quick DBus LinguistTools REQUIRED)
 
 ### Sets QT_INSTALL_QML to the directory where QML Plugins should be installed
 function(FindQtInstallQml)
