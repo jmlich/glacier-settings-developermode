@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../developmentsettingsplugin.h" line="34"/>
-        <source>Developmet tools and settings</source>
+        <source>Development tools and settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
