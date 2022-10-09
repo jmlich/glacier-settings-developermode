@@ -4,42 +4,48 @@
 <context>
     <name>DeveloperModeSettingsPlugin</name>
     <message>
-        <location filename="../developermodesettingsplugin.h" line="33"/>
         <source>Developer mode</source>
-        <translation type="unfinished">Ontwikkelaarsmodus</translation>
+        <translation type="obsolete">Ontwikkelaarsmodus</translation>
     </message>
+</context>
+<context>
+    <name>DevelopmentSettingsPlugin</name>
     <message>
-        <location filename="../developermodesettingsplugin.h" line="34"/>
-        <source>Developer tools</source>
+        <location filename="../developmentsettingsplugin.h" line="33"/>
+        <source>Development</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>developermode</name>
     <message>
-        <location filename="../developermode.qml" line="39"/>
         <source>Developer mode</source>
-        <translation>Ontwikkelaarsmodus</translation>
+        <translation type="vanished">Ontwikkelaarsmodus</translation>
     </message>
     <message>
-        <location filename="../developermode.qml" line="80"/>
         <source>Enable developer mode</source>
-        <translation>Ontwikkelaarsmodus inschakelen</translation>
+        <translation type="vanished">Ontwikkelaarsmodus inschakelen</translation>
     </message>
     <message>
-        <location filename="../developermode.qml" line="106"/>
-        <source>Allow install untrusted software</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../developermode.qml" line="147"/>
         <source>Wlan IP address</source>
-        <translation>WLAN-IP-adres</translation>
+        <translation type="vanished">WLAN-IP-adres</translation>
     </message>
     <message>
-        <location filename="../developermode.qml" line="177"/>
         <source>USB IP address</source>
-        <translation>USB-IP-adres</translation>
+        <translation type="vanished">USB-IP-adres</translation>
+    </message>
+</context>
+<context>
+    <name>development</name>
+    <message>
+        <location filename="../development.qml" line="35"/>
+        <source>Developer mode</source>
+        <translation type="unfinished">Ontwikkelaarsmodus</translation>
+    </message>
+    <message>
+        <location filename="../development.qml" line="49"/>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -1,43 +1,59 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ru">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ru">
 <context>
     <name>DeveloperModeSettingsPlugin</name>
     <message>
-        <location filename="../developermodesettingsplugin.h" line="33"/>
         <source>Developer mode</source>
-        <translation>Режим разработчика</translation>
+        <translation type="vanished">Режим разработчика</translation>
     </message>
     <message>
-        <location filename="../developermodesettingsplugin.h" line="34"/>
         <source>Developer tools</source>
-        <translation>Инструменты разработчика</translation>
+        <translation type="vanished">Инструменты разработчика</translation>
+    </message>
+</context>
+<context>
+    <name>DevelopmentSettingsPlugin</name>
+    <message>
+        <location filename="../developmentsettingsplugin.h" line="33"/>
+        <source>Development</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>developermode</name>
     <message>
-        <location filename="../developermode.qml" line="39"/>
         <source>Developer mode</source>
-        <translation>Режим разработчика</translation>
+        <translation type="vanished">Режим разработчика</translation>
     </message>
     <message>
-        <location filename="../developermode.qml" line="80"/>
         <source>Enable developer mode</source>
-        <translation>Включить режим разработчика</translation>
+        <translation type="vanished">Включить режим разработчика</translation>
     </message>
     <message>
-        <location filename="../developermode.qml" line="106"/>
         <source>Allow install untrusted software</source>
-        <translation>Позволять установку непроверенных приложений</translation>
+        <translation type="vanished">Позволять установку непроверенных приложений</translation>
     </message>
     <message>
-        <location filename="../developermode.qml" line="147"/>
         <source>Wlan IP address</source>
-        <translation>IP адресс Wlan</translation>
+        <translation type="vanished">IP адресс Wlan</translation>
     </message>
     <message>
-        <location filename="../developermode.qml" line="177"/>
         <source>USB IP address</source>
-        <translation>IP адресс USB</translation>
+        <translation type="vanished">IP адресс USB</translation>
+    </message>
+</context>
+<context>
+    <name>development</name>
+    <message>
+        <location filename="../development.qml" line="35"/>
+        <source>Developer mode</source>
+        <translation type="unfinished">Режим разработчика</translation>
+    </message>
+    <message>
+        <location filename="../development.qml" line="49"/>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -4,42 +4,52 @@
 <context>
     <name>DeveloperModeSettingsPlugin</name>
     <message>
-        <location filename="../developermodesettingsplugin.h" line="33"/>
         <source>Developer mode</source>
-        <translation type="unfinished">Kehittäjätila</translation>
+        <translation type="obsolete">Kehittäjätila</translation>
     </message>
+</context>
+<context>
+    <name>DevelopmentSettingsPlugin</name>
     <message>
-        <location filename="../developermodesettingsplugin.h" line="34"/>
-        <source>Developer tools</source>
+        <location filename="../developmentsettingsplugin.h" line="33"/>
+        <source>Development</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>developermode</name>
     <message>
-        <location filename="../developermode.qml" line="39"/>
         <source>Developer mode</source>
-        <translation>Kehittäjätila</translation>
+        <translation type="vanished">Kehittäjätila</translation>
     </message>
     <message>
-        <location filename="../developermode.qml" line="80"/>
         <source>Enable developer mode</source>
-        <translation>Ota kehittäjätila käyttöön</translation>
+        <translation type="vanished">Ota kehittäjätila käyttöön</translation>
     </message>
     <message>
-        <location filename="../developermode.qml" line="106"/>
         <source>Allow install untrusted software</source>
-        <translation>Salli ei-luotetun ohjelmiston asentaminen</translation>
+        <translation type="vanished">Salli ei-luotetun ohjelmiston asentaminen</translation>
     </message>
     <message>
-        <location filename="../developermode.qml" line="147"/>
         <source>Wlan IP address</source>
-        <translation>WLAN IP-osoite</translation>
+        <translation type="vanished">WLAN IP-osoite</translation>
     </message>
     <message>
-        <location filename="../developermode.qml" line="177"/>
         <source>USB IP address</source>
-        <translation>USB IP-osoite</translation>
+        <translation type="vanished">USB IP-osoite</translation>
+    </message>
+</context>
+<context>
+    <name>development</name>
+    <message>
+        <location filename="../development.qml" line="35"/>
+        <source>Developer mode</source>
+        <translation type="unfinished">Kehittäjätila</translation>
+    </message>
+    <message>
+        <location filename="../development.qml" line="49"/>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
