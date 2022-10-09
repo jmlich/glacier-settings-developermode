@@ -8,6 +8,11 @@
         <source>Development</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../developmentsettingsplugin.h" line="34"/>
+        <source>Developmet tools and settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>development</name>

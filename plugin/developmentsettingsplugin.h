@@ -31,7 +31,7 @@ public:
     PluginCategory category() { return PluginCategory::Development; }
     QString id() { return "development"; }
     QString title() { return tr("Development"); }
-    QString description() { return "Developmet tools and settings"; }
+    QString description() { return tr("Developmet tools and settings"); }
     QString qmlPath() { return "/usr/share/glacier-settings/plugins/development/development.qml"; }
     QString icon() { return "/usr/share/glacier-settings/plugins/development/development.svg"; }
     bool enabled();
