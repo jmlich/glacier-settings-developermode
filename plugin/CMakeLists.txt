@@ -28,8 +28,8 @@ INSTALL(FILES ${PLUGINS_FILES}
 file(GLOB TS_FILES translations/*.ts)
 #set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION ${CMAKE_INSTALL_LOCALEDIR})
 qt5_add_translation(QM_FILES ${TS_FILES})
-add_custom_target(developermode_translations DEPENDS ${QM_FILES})
-add_dependencies(developermode developermode_translations)
+add_custom_target(development_translations DEPENDS ${QM_FILES})
+add_dependencies(development development_translations)
 
 install(FILES ${QM_FILES}
     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/glacier-settings/translations)
