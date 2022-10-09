@@ -3,5 +3,5 @@ git:
     - filter_type: file
       file_format: QT
       source_language: en
-      source_file: plugin/translations/developermode.ts
-      translation_files_expression: 'plugin/translations/developermode_<lang>.ts'
+      source_file: plugin/translations/development.ts
+      translation_files_expression: 'plugin/translations/development_<lang>.ts'
