@@ -13,7 +13,7 @@ target_link_libraries(glacier-developermode-daemon PUBLIC
 
 install(FILES
     nemo-developermode-dbus.conf
-    DESTINATION ${CMAKE_INSTALL_SYSCONFDIR}/dbus-1/system.d/)
+    DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/dbus-1/system.d/)
 
 install(FILES
     nemodebugmode.service
