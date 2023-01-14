@@ -35,8 +35,11 @@ SystemDConnector::SystemDConnector(QObject* parent)
     QDBusMessage msg = QDBusMessage::createMethodCall(
         s_serviceName,
         s_servicePath,
-        s_unitIface,
-        "ActiveState");
+        s_propertiesIface,
+        "Get");
+
+    msg.setArguments({ s_unitIface, s_propertyActiveState });
+
     QDBusPendingReply<QVariant> msgPending = QDBusConnection::systemBus().asyncCall(msg);
     QDBusPendingCallWatcher* msgWatcher = new QDBusPendingCallWatcher(msgPending);
 
@@ -62,6 +65,8 @@ void SystemDConnector::enableDeveloperMode(bool enable)
         s_servicePath,
         s_unitIface,
         action);
+
+    qDebug() << Q_FUNC_INFO << action;
 
     msg.setArguments({ "replace" });
     QDBusConnection::systemBus().call(msg);
