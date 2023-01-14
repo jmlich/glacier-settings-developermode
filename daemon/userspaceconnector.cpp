@@ -31,7 +31,7 @@ UserSpaceConnector::UserSpaceConnector(QObject* obj)
 {
     QDBusConnection systemConnection = QDBusConnection::systemBus();
     QDBusInterface dbInterface(
-        s_serviceName, s_servicePath, s_interfce, systemConnection);
+        s_serviceName, s_servicePath, s_unitIface, systemConnection);
 
     if (dbInterface.isValid()) {
         if (dbInterface.property("ActiveState").toString() == "active") {
