@@ -74,14 +74,18 @@ void SystemDConnector::enableDeveloperMode(bool enable)
 
 void SystemDConnector::propertiesChanged(const QString& data, const QVariantMap& properties, const QStringList& invalidatedProperties)
 {
-    bool activeState = properties.value(s_propertyActiveState, QString()).toString() == "active";
-    if (activeState != m_sshdActive) {
-        if (activeState) {
-            m_sshdActive = true;
-        } else {
-            m_sshdActive = false;
-        }
+    QString activeStateStr = properties.value(s_propertyActiveState, QString()).toString();
+
+    if ((activeStateStr == "active") && !m_sshdActive) {
+        m_sshdActive = true;
         emit sshActiveChanged(m_sshdActive);
+        qDebug() << Q_FUNC_INFO << activeStateStr << m_sshdActive;
+    } else if (((activeStateStr == "inactive") || (activeStateStr == "failed")) && m_sshdActive) {
+        m_sshdActive = false;
+        emit sshActiveChanged(m_sshdActive);
+        qDebug() << Q_FUNC_INFO << activeStateStr << m_sshdActive;
+    } else {
+        qDebug() << Q_FUNC_INFO << activeStateStr;
     }
 }
 
