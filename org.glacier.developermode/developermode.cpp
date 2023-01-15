@@ -61,7 +61,32 @@ void DeveloperMode::setEnabled(bool enable)
 
     if (m_enabled != enable) {
         m_enabled = enable;
+
+        propagateEnabled();
         emit enabledChanged();
+    }
+}
+
+void DeveloperMode::propagateEnabled()
+{
+    QDBusInterface dbInterface(
+        "org.nemomobile.developermode",
+        "/",
+        "org.freedesktop.DBus.Properties",
+        QDBusConnection::systemBus());
+
+    if (!dbInterface.isValid()) {
+        qWarning("Developermode systemd interface not found");
+        return;
+    }
+    QDBusMessage reply = dbInterface.call(
+        "Set",
+        "org.nemomobile.developermode",
+        "enabled",
+        QVariant::fromValue(QDBusVariant(m_enabled)));
+
+    if (reply.type() == QDBusMessage::ErrorMessage) {
+        qWarning() << Q_FUNC_INFO << "ERROR" << reply.errorMessage() << m_enabled;
     }
 }
 

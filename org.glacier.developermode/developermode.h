@@ -48,6 +48,8 @@ private slots:
 private:
     bool m_available;
     bool m_enabled;
+
+    void propagateEnabled();
 };
 
 #endif // DEVELOPERMODE_H
