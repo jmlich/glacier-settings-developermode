@@ -17,12 +17,12 @@ set(CMAKE_INSTALL_PREFIX /usr)
 set(INSTALL_QML_IMPORT_DIR "${CMAKE_INSTALL_FULL_LIBDIR}/qt/qml"
 	CACHE PATH "Custom QML import installation directory")
 
-set(QT_MIN_VERSION "5.11.0")
-find_package(Qt5 ${QT_MIN_VERSION} COMPONENTS Gui Qml Quick DBus LinguistTools REQUIRED)
+set(QT_MIN_VERSION "6.0.0")
+find_package(Qt6 ${QT_MIN_VERSION} COMPONENTS Gui Qml Quick DBus LinguistTools REQUIRED)
 
 ### Sets QT_INSTALL_QML to the directory where QML Plugins should be installed
 function(FindQtInstallQml)
-    find_program(QMAKE NAMES qmake-qt5 qmake)
+    find_program(QMAKE NAMES qmake6 qmake)
     if(NOT QMAKE)
         message(FATAL_ERROR "qmake not found")
     endif()

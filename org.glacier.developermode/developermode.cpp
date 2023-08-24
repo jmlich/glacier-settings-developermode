@@ -19,6 +19,7 @@
 
 #include "developermode.h"
 
+#include <QFile>
 #include <QDBusInterface>
 #include <QFileSystemWatcher>
 

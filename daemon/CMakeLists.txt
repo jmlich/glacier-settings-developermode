@@ -8,8 +8,8 @@ set(SRC
 add_executable(glacier-developermode-daemon ${SRC})
 
 target_link_libraries(glacier-developermode-daemon PUBLIC
-    Qt5::Core
-    Qt5::DBus)
+    Qt6::Core
+    Qt6::DBus)
 
 install(FILES
     nemo-developermode-dbus.conf
