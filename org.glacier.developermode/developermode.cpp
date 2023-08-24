@@ -19,8 +19,8 @@
 
 #include "developermode.h"
 
-#include <QFile>
 #include <QDBusInterface>
+#include <QFile>
 #include <QFileSystemWatcher>
 
 DeveloperMode::DeveloperMode(QQuickItem* parent)
