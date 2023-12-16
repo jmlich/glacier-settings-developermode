@@ -16,16 +16,14 @@
  * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02110-1301, USA.
  */
-import QtQuick 2.6
 
-import QtQuick.Controls 1.0
-import QtQuick.Controls.Nemo 1.0
-import QtQuick.Controls.Styles.Nemo 1.0
+import QtQuick
+import Nemo.Controls
 
-import Nemo.Configuration 1.0
-import org.glacier.developermode 1.0
+import Nemo.Configuration
+import org.glacier.developermode
 
-import Glacier.Controls.Settings 1.0
+import Glacier.Controls.Settings
 
 Page {
     id: developerModePage
